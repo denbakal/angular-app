@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import {HttpModule, JsonpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import {  Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { AboutGuard } from './about/about.guard';
 
 import { HeroService } from "./hero.service";
+import { httpFactory } from "./interceptor/http.factory";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
@@ -36,7 +37,15 @@ const routes: Routes = [
     JsonpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [HeroService, AboutGuard],
+  providers: [
+    HeroService,
+    AboutGuard,
+    {
+      provide: Http,
+      useFactory: httpFactory,
+      deps: [XHRBackend, RequestOptions]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
