@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
+import { AboutComponent } from './about/about.component';
+import { AboutGuard } from './about/about.guard';
 
 import { HeroService } from "./hero.service";
 
@@ -15,7 +17,8 @@ const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'detail/:id', component: HeroDetailComponent }
+  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'about', component: AboutComponent, canActivate: [AboutGuard] }
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const routes: Routes = [
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardComponent
+    DashboardComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ const routes: Routes = [
     JsonpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [HeroService],
+  providers: [HeroService, AboutGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
