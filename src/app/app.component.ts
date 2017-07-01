@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.gerHeroes().then(heroes => this.heroes = heroes);
+    // this.heroService.gerHeroes().then(heroes => this.heroes = heroes); Promise
+    this.heroService.gerHeroes().subscribe(heroes => this.heroes = heroes);
   }
 }
