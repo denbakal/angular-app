@@ -4,7 +4,11 @@ import {HEROES} from "./mock-heroes";
 
 @Injectable()
 export class HeroService {
-  gerHeroes(): Hero[] {
-    return HEROES;
+  gerHeroes(): Promise<Hero[]> {
+    // return Promise.resolve(HEROES);
+    return new Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(HEROES), 2000)
+    });
   }
 }
