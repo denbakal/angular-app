@@ -7,6 +7,7 @@ import { Http, Response } from '@angular/http';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {Subscription} from "rxjs/Subscription";
 
 @Injectable()
 export class HeroService {
@@ -24,5 +25,10 @@ export class HeroService {
   gerHeroes(): Observable<Hero[]> {
     return this.http.get(this.heroesUrl)
       .map((res: Response) => res.json() as Hero[]);
+  }
+
+  getHero(id: number): Observable<Hero> {
+    return this.gerHeroes()
+      .map(heroes => heroes.find(hero => hero.id == id));
   }
 }
