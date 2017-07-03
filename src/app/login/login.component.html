@@ -1,0 +1,11 @@
+<h2>Login Form:</h2>
+<div>
+  <div>
+    <span>Login: </span> <input [(ngModel)]="login" placeholder="login"/>
+  </div>
+  <div>
+    <span>Password: </span> <input [(ngModel)]="password" placeholder="password"/>
+  </div>
+  <button type="button" (click)="onSubmit()">Sign in</button>
+  <button type="button" (click)="onLogout()">Logout</button>
+</div>

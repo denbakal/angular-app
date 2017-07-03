@@ -9,17 +9,21 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
 import { AboutComponent } from './about/about.component';
-import { AboutGuard } from './about/about.guard';
+import { LoginComponent } from './login/login.components';
 
 import { HeroService } from "./hero.service";
+import { AuthService } from "./auth/auth.service";
+import { AboutGuard } from './about/about.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { httpFactory } from "./interceptor/http.factory";
 
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'about', component: AboutComponent, canActivate: [AboutGuard] }
+  { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'detail/:id', component: HeroDetailComponent, canActivate: [AuthGuard] },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -28,7 +32,8 @@ const routes: Routes = [
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,9 @@ const routes: Routes = [
       provide: Http,
       useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions]
-    }
+    },
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
