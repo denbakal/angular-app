@@ -20,11 +20,17 @@ export class HeroService {
     });
   }*/
 
-  private heroesUrl = './assets/heroes.json';
+  // private heroesUrl = './assets/heroes.json';
+  private heroesUrl = 'api/heroes';
 
   gerHeroes(): Observable<Hero[]> {
     return this.http.get(this.heroesUrl)
-      .map((res: Response) => res.json() as Hero[]);
+      .map((res: Response) => this.extractData(res));
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body.data || {};
   }
 
   getHero(id: number): Observable<Hero> {

@@ -10,6 +10,8 @@ import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
 
 import { HeroService } from "./hero.service";
+import {InMemoryWebApiModule} from "angular-in-memory-web-api";
+import {HeroData} from "./hero-data";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
@@ -30,7 +32,8 @@ const routes: Routes = [
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
     HttpModule,
     JsonpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    InMemoryWebApiModule.forRoot(HeroData)
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]
