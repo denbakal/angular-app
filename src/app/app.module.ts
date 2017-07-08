@@ -40,7 +40,7 @@ const routes: Routes = [
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
     HttpModule,
     JsonpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [
     HeroService,
