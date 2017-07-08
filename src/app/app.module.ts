@@ -16,6 +16,7 @@ import { AuthService } from "./auth/auth.service";
 import { AboutGuard } from './about/about.guard';
 import { AuthGuard } from './auth/auth.guard';
 import { httpFactory } from "./interceptor/http.factory";
+import {NotFoundComponent} from "./core/not-found.component";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'detail/:id', component: HeroDetailComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
@@ -33,7 +35,8 @@ const routes: Routes = [
     HeroesComponent,
     DashboardComponent,
     AboutComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
