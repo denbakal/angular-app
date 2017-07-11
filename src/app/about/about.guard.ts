@@ -6,6 +6,6 @@ export class AboutGuard implements CanActivate {
  constructor() { }
 
  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  return confirm('Are you really decide to pass from this page?');;
+  return confirm('Are you really decide to pass from this page?');
  }
 }
