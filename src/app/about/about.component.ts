@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {MdDialog, MdDialogConfig} from "@angular/material";
 import {ContactComponent} from "../contact/contact.component";
+import {ConfirmDialogService} from "../dialog/shared/confirm-dialog.service";
 
 @Component({
   selector: 'app-about',
@@ -13,7 +14,8 @@ export class AboutComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private dialog: MdDialog
+    private dialog: MdDialog,
+    private dialogService: ConfirmDialogService
   ) {}
 
   ngOnInit() {
@@ -27,5 +29,13 @@ export class AboutComponent implements OnInit {
 
   openContactDialog(): void {
     this.dialog.open(ContactComponent, this.dialogConfig);
+  }
+
+  onConfirm(): void {
+    this.dialogService
+      .confirm('Dialog', 'Are you sure you want to do this?')
+      .subscribe(res => {
+        console.log('Result: ' + res);
+      });
   }
 }

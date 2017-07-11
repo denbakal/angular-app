@@ -20,6 +20,8 @@ import { httpFactory } from "./interceptor/http.factory";
 import {NotFoundComponent} from "./core/not-found.component";
 import {ContactComponent} from "./contact/contact.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ConfirmDialogComponent} from "./dialog/confitm-dialog.component";
+import {ConfirmDialogService} from "./dialog/shared/confirm-dialog.service";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
@@ -40,10 +42,12 @@ const routes: Routes = [
     AboutComponent,
     LoginComponent,
     NotFoundComponent,
-    ContactComponent
+    ContactComponent,
+    ConfirmDialogComponent
   ],
   entryComponents: [
-    ContactComponent
+    ContactComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,8 @@ const routes: Routes = [
       deps: [XHRBackend, RequestOptions]
     },
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ConfirmDialogService
   ],
   bootstrap: [AppComponent]
 })
