@@ -22,6 +22,7 @@ import {ContactComponent} from "./contact/contact.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ConfirmDialogComponent} from "./dialog/confitm-dialog.component";
 import {ConfirmDialogService} from "./dialog/shared/confirm-dialog.service";
+import {CounterComponent} from "./counter/counter.component";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: HeroDetailComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'counter', component: CounterComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -43,7 +45,8 @@ const routes: Routes = [
     LoginComponent,
     NotFoundComponent,
     ContactComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CounterComponent
   ],
   entryComponents: [
     ContactComponent,
