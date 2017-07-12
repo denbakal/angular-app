@@ -18,6 +18,6 @@ export class ContactComponent implements OnInit {
 
   onSend() {
     console.log('Sending contact info: ' + this.info);
-    this.mdDialogRef.close();
+    this.mdDialogRef.close('test close dialog');
   }
 }

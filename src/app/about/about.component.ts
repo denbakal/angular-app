@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
-import {MdDialog, MdDialogConfig} from "@angular/material";
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ContactComponent} from "../contact/contact.component";
 import {ConfirmDialogService} from "../dialog/shared/confirm-dialog.service";
 
@@ -28,7 +28,12 @@ export class AboutComponent implements OnInit {
   }
 
   openContactDialog(): void {
-    this.dialog.open(ContactComponent, this.dialogConfig);
+    let dialogRef: MdDialogRef<ContactComponent>;
+
+    dialogRef = this.dialog.open(ContactComponent, this.dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Result after close dialog: ' + result);
+    })
   }
 
   onConfirm(): void {
