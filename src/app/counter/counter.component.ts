@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {EventBus} from "../core/event/event-bus.service";
 
 @Component({
   selector: 'counter',
@@ -12,7 +13,7 @@ export class CounterComponent implements OnInit {
   @Output('update')
   change: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() {
+  constructor(private eventBus: EventBus) {
   }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class CounterComponent implements OnInit {
   increment() {
     this.count++;
     this.change.emit(this.count);
+    this.eventBus.fireEvent('global', 'test');
   }
 
   decrement() {

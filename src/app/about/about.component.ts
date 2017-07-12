@@ -1,21 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ContactComponent} from "../contact/contact.component";
 import {ConfirmDialogService} from "../dialog/shared/confirm-dialog.service";
+import {EventBus} from "../core/event/event-bus.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-about',
   templateUrl: 'about.component.html'
 })
 
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, OnDestroy {
   dialogConfig: MdDialogConfig;
+  events: string[] = [];
+  subscription: Subscription;
 
   constructor(
     private titleService: Title,
     private dialog: MdDialog,
-    private dialogService: ConfirmDialogService
+    private dialogService: ConfirmDialogService,
+    private eventBus: EventBus
   ) {}
 
   ngOnInit() {
@@ -25,6 +30,13 @@ export class AboutComponent implements OnInit {
 
     this.dialogConfig = new MdDialogConfig();
     this.dialogConfig.disableClose = true;
+
+    this.subscription = this.eventBus.addHandler<string>('global')
+                 .subscribe(message => {
+                   console.log('AboutComponent - Event from EventBus: ' + message);
+                   this.events.push(message as string);
+                   console.log('AboutComponent - Event from EventBus: ' + this.events.length);
+                 });
   }
 
   openContactDialog(): void {
@@ -42,5 +54,10 @@ export class AboutComponent implements OnInit {
       .subscribe(res => {
         console.log('Result: ' + res);
       });
+  }
+
+  ngOnDestroy(): void {
+    console.log('Destroy about...');
+    this.subscription.unsubscribe();
   }
 }
