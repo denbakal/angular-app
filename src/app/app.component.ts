@@ -13,12 +13,18 @@ import { Component } from '@angular/core';
     </nav>
     <router-outlet></router-outlet>
     <h3>Counter:</h3>
-    <counter [init]="initialCount"></counter>
+    Parent: {{initialCount}}
+    <counter [init]="initialCount" (update)="countChange($event)">
   `,
   styleUrls: ['./app.component.css'],
 })
 
 export class AppComponent {
   title = 'Tour of Heroes';
-  initialCount: number = 10;
+  initialCount: number = 11;
+
+  countChange(event) {
+    console.log('Listener: ' + event);
+    this.initialCount = event;
+  }
 }
