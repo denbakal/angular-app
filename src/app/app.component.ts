@@ -8,14 +8,17 @@ import { Component } from '@angular/core';
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
       <a routerLink="/about" routerLinkActive="active">About</a>
-      <a routerLink="/counter" routerLinkActive="active">Counter</a>
+      <!--<a routerLink="/counter" routerLinkActive="active">Counter</a>-->
       <a routerLink="/login" routerLinkActive="active">Sign In</a>
     </nav>
     <router-outlet></router-outlet>
+    <h3>Counter:</h3>
+    <counter [init]="initialCount"></counter>
   `,
   styleUrls: ['./app.component.css'],
 })
 
 export class AppComponent {
   title = 'Tour of Heroes';
+  initialCount: number = 10;
 }
