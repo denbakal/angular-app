@@ -7,6 +7,6 @@ export class CarService {
   }
 
   getName() {
-    return `Cat with ${this.engine.getName()}(${this.engine.getHorsepower()} HP)`;
+    return `Car with ${this.engine.getName()}(${this.engine.getHorsepower()} HP)`;
   }
 }
