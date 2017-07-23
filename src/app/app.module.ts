@@ -25,6 +25,8 @@ import {ConfirmDialogService} from "./dialog/shared/confirm-dialog.service";
 import {CounterComponent} from "./counter/counter.component";
 import {EventBus} from "./core/event/event-bus.service";
 import {PersonsComponent} from "./persons/persons.component";
+import {VideoService} from "./video/video.service";
+import {VideoComponent} from "./video/video.component";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
@@ -35,6 +37,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'counter', component: CounterComponent },
   { path: 'persons', component: PersonsComponent },
+  { path: 'videos', component: VideoComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -50,7 +53,8 @@ const routes: Routes = [
     ContactComponent,
     ConfirmDialogComponent,
     CounterComponent,
-    PersonsComponent
+    PersonsComponent,
+    VideoComponent
   ],
   entryComponents: [
     ContactComponent,
@@ -76,7 +80,8 @@ const routes: Routes = [
     AuthService,
     AuthGuard,
     ConfirmDialogService,
-    EventBus
+    EventBus,
+    VideoService
   ],
   bootstrap: [AppComponent]
 })
