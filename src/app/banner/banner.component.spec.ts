@@ -1,4 +1,4 @@
-import {BannerComponent} from "./banner.cpmponent";
+import {BannerComponent} from "./banner.component";
 import {ComponentFixture, ComponentFixtureAutoDetect, TestBed} from "@angular/core/testing";
 import {DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
