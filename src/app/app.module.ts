@@ -27,6 +27,9 @@ import {EventBus} from "./core/event/event-bus.service";
 import {PersonsComponent} from "./persons/persons.component";
 import {VideoService} from "./video/video.service";
 import {VideoComponent} from "./video/video.component";
+import {StoreModule} from "@ngrx/store";
+import {counterReducer} from "./store/counter.reducer";
+import {StoreComponent} from "./store/store.component";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
@@ -38,6 +41,7 @@ const routes: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'persons', component: PersonsComponent },
   { path: 'videos', component: VideoComponent },
+  { path: 'store', component: StoreComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -54,7 +58,8 @@ const routes: Routes = [
     ConfirmDialogComponent,
     CounterComponent,
     PersonsComponent,
-    VideoComponent
+    VideoComponent,
+    StoreComponent
   ],
   entryComponents: [
     ContactComponent,
@@ -67,7 +72,8 @@ const routes: Routes = [
     JsonpModule,
     MdDialogModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {useHash: true})
+    RouterModule.forRoot(routes, {useHash: true}),
+    StoreModule.forRoot({counter: counterReducer})
   ],
   providers: [
     HeroService,

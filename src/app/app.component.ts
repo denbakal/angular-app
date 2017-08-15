@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
       <a routerLink="/videos" routerLinkActive="active">Videos</a>
       <!--<a routerLink="/counter" routerLinkActive="active">Counter</a>-->
       <a routerLink="/login" routerLinkActive="active">Sign In</a>
+      <a routerLink="/store" routerLinkActive="active">Store</a>
     </nav>
     <router-outlet></router-outlet>
     <h3>Counter:</h3>
