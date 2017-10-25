@@ -30,6 +30,7 @@ import {VideoComponent} from "./video/video.component";
 import {StoreModule} from "@ngrx/store";
 import {counterReducer} from "./store/counter.reducer";
 import {StoreComponent} from "./store/store.component";
+import {appRouter} from "app/app.router";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
@@ -39,7 +40,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'counter', component: CounterComponent },
-  { path: 'persons', component: PersonsComponent },
+  // { path: 'persons', component: PersonsComponent },
   { path: 'videos', component: VideoComponent },
   { path: 'store', component: StoreComponent },
   { path: '**', component: NotFoundComponent }
@@ -51,13 +52,11 @@ const routes: Routes = [
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    AboutComponent,
     LoginComponent,
     NotFoundComponent,
     ContactComponent,
     ConfirmDialogComponent,
     CounterComponent,
-    PersonsComponent,
     VideoComponent,
     StoreComponent
   ],
@@ -72,8 +71,9 @@ const routes: Routes = [
     JsonpModule,
     MdDialogModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {useHash: true}),
-    StoreModule.forRoot({counter: counterReducer})
+    // RouterModule.forRoot(routes, {useHash: true}),
+    StoreModule.forRoot({counter: counterReducer}),
+    appRouter
   ],
   providers: [
     HeroService,
