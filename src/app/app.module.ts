@@ -30,11 +30,15 @@ import {VideoComponent} from "./video/video.component";
 import {StoreModule} from "@ngrx/store";
 import {counterReducer} from "./store/counter.reducer";
 import {StoreComponent} from "./store/store.component";
+import {UserComponent} from "./user/user.component";
+import {UserListComponent} from "./user/list/user-list.component";
+import {UserProfileComponent} from "./user/profile/user-profile.component";
 
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'detail/:id', component: HeroDetailComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
@@ -42,6 +46,12 @@ const routes: Routes = [
   { path: 'persons', component: PersonsComponent },
   { path: 'videos', component: VideoComponent },
   { path: 'store', component: StoreComponent },
+
+  { path: 'users', component: UserComponent, children: [
+    {path: '', component: UserListComponent},
+    {path: 'profile', component: UserProfileComponent}
+  ]},
+
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -59,7 +69,10 @@ const routes: Routes = [
     CounterComponent,
     PersonsComponent,
     VideoComponent,
-    StoreComponent
+    StoreComponent,
+    UserComponent,
+    UserListComponent,
+    UserProfileComponent
   ],
   entryComponents: [
     ContactComponent,
