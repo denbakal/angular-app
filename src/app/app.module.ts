@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HttpModule, JsonpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import {  Routes, RouterModule } from '@angular/router';
-import { MdDialogModule } from "@angular/material";
+import { MatDialogModule } from "@angular/material";
 
 import { AppComponent } from './app.component';
 import { HeroDetailComponent } from './hero-detail.component';
@@ -83,7 +83,7 @@ const routes: Routes = [
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
     HttpModule,
     JsonpModule,
-    MdDialogModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes, {useHash: true}),
     StoreModule.forRoot({counter: counterReducer})

@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+// import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ContactComponent} from "../contact/contact.component";
 import {ConfirmDialogService} from "../dialog/shared/confirm-dialog.service";
 import {EventBus} from "../core/event/event-bus.service";
 import {Subscription} from "rxjs/Subscription";
+import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'app-about',
@@ -12,13 +13,13 @@ import {Subscription} from "rxjs/Subscription";
 })
 
 export class AboutComponent implements OnInit, OnDestroy {
-  dialogConfig: MdDialogConfig;
+  dialogConfig: MatDialogConfig;
   events: string[] = [];
   subscription: Subscription;
 
   constructor(
     private titleService: Title,
-    private dialog: MdDialog,
+    private dialog: MatDialog,
     private dialogService: ConfirmDialogService,
     private eventBus: EventBus
   ) {}
@@ -28,7 +29,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     console.log('init about (bearer-token) ' + localStorage.getItem('bearer-token'));
     console.log('init about ' + localStorage.getItem('refresh-token'));
 
-    this.dialogConfig = new MdDialogConfig();
+    this.dialogConfig = new MatDialogConfig();
     this.dialogConfig.disableClose = true;
 
     this.subscription = this.eventBus.addHandler<string>('global')
@@ -40,7 +41,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   }
 
   openContactDialog(): void {
-    let dialogRef: MdDialogRef<ContactComponent>;
+    let dialogRef: MatDialogRef<ContactComponent>;
 
     dialogRef = this.dialog.open(ContactComponent, this.dialogConfig);
     dialogRef.afterClosed().subscribe(result => {

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {MdDialog, MdDialogRef} from "@angular/material";
+import {MatDialog, MatDialogRef} from "@angular/material";
 import {Observable} from "rxjs/Observable";
 import {ConfirmDialogComponent} from "../confitm-dialog.component";
 
@@ -7,11 +7,11 @@ import {ConfirmDialogComponent} from "../confitm-dialog.component";
 export class ConfirmDialogService {
 
   constructor(
-    private dialog: MdDialog
+    private dialog: MatDialog
   ) {}
 
   public confirm(title: string, message: string): Observable<boolean> {
-    let dialogRef: MdDialogRef<ConfirmDialogComponent>;
+    let dialogRef: MatDialogRef<ConfirmDialogComponent>;
 
     dialogRef = this.dialog.open(ConfirmDialogComponent);
     dialogRef.componentInstance.title = title;

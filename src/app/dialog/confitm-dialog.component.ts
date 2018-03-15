@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'confirm-dialog',
@@ -11,7 +11,7 @@ export class ConfirmDialogComponent implements OnInit {
   message: string;
 
   constructor(
-    private dialogRef: MdDialogRef<ConfirmDialogComponent>
+    private dialogRef: MatDialogRef<ConfirmDialogComponent>
   ) {}
 
   ngOnInit() {
