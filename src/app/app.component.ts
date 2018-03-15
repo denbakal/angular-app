@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
       <a routerLink="/login" routerLinkActive="active">Sign In</a>
       <a routerLink="/store" routerLinkActive="active">Store</a>
       <a routerLink="/users" routerLinkActive="active">Users</a>
+      <a routerLink="/async" routerLinkActive="active">Async</a>
     </nav>
     <router-outlet></router-outlet>
     <h3>Counter:</h3>

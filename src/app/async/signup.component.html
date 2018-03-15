@@ -1,0 +1,21 @@
+<form [formGroup]="myForm">
+  <div>
+    <label>Name:</label>
+    <input type="text" formControlName="name">
+  </div>
+  <div>
+    <label>Email:</label>
+    <input type="email" formControlName="email">
+  </div>
+
+  <div *ngIf="myForm.get('email').status === 'PENDING'">
+    Checking...
+  </div>
+  <div *ngIf="myForm.get('email').status === 'VALID'">
+    Email is available!
+  </div>
+
+  <div *ngIf="myForm.get('email').errors && myForm.get('email').errors.emailTaken">
+    Oh noes, this email is already taken!
+  </div>
+</form>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import {  Routes, RouterModule } from '@angular/router';
 import { MatDialogModule } from "@angular/material";
@@ -33,6 +33,8 @@ import {StoreComponent} from "./store/store.component";
 import {UserComponent} from "./user/user.component";
 import {UserListComponent} from "./user/list/user-list.component";
 import {UserProfileComponent} from "./user/profile/user-profile.component";
+import {SignupComponent} from "./async/signup.component";
+import {SignupService} from "./async/signup.service";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -46,6 +48,7 @@ const routes: Routes = [
   { path: 'persons', component: PersonsComponent },
   { path: 'videos', component: VideoComponent },
   { path: 'store', component: StoreComponent },
+  { path: 'async', component: SignupComponent },
 
   { path: 'users', component: UserComponent, children: [
     {path: '', component: UserListComponent},
@@ -72,7 +75,8 @@ const routes: Routes = [
     StoreComponent,
     UserComponent,
     UserListComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SignupComponent
   ],
   entryComponents: [
     ContactComponent,
@@ -81,6 +85,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
+    ReactiveFormsModule,
     HttpModule,
     JsonpModule,
     MatDialogModule,
@@ -100,7 +105,8 @@ const routes: Routes = [
     AuthGuard,
     ConfirmDialogService,
     EventBus,
-    VideoService
+    VideoService,
+    SignupService
   ],
   bootstrap: [AppComponent]
 })
