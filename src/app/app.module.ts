@@ -35,6 +35,10 @@ import {UserListComponent} from "./user/list/user-list.component";
 import {UserProfileComponent} from "./user/profile/user-profile.component";
 import {SignupComponent} from "./async/signup.component";
 import {SignupService} from "./async/signup.service";
+import {BannerComponent} from "./banner/banner.component";
+import {BannerAsyncComponent} from "./banner/async/banner-async.component";
+import {TwainComponent} from "./twain/twain.component";
+import {WelcomeComponent} from "./welcome/welcome.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -76,7 +80,11 @@ const routes: Routes = [
     UserComponent,
     UserListComponent,
     UserProfileComponent,
-    SignupComponent
+    SignupComponent,
+    BannerComponent,
+    BannerAsyncComponent,
+    TwainComponent,
+    WelcomeComponent
   ],
   entryComponents: [
     ContactComponent,

@@ -108,6 +108,12 @@
       "sourceRoot": "e2e",
       "projectType": "application",
       "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "statsJson": true
+          }
+        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
